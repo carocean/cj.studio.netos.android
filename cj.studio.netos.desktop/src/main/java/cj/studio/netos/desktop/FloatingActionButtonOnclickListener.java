@@ -25,9 +25,9 @@ import java.util.List;
 
 import cj.studio.netos.framework.Frame;
 import cj.studio.netos.framework.ICellsap;
-import cj.studio.netos.framework.IReciever;
 import cj.studio.netos.framework.IRequester;
 import cj.studio.netos.framework.IServiceProvider;
+import cj.studio.netos.framework.IViewportRegionManager;
 import cj.studio.netos.framework.util.WindowUtil;
 import cj.studio.netos.framework.view.BadgeRadioButton;
 import cj.studio.netos.framework.view.CJBottomNavigationView;
@@ -35,11 +35,13 @@ import cj.studio.netos.framework.view.CJBottomNavigationView;
 public class FloatingActionButtonOnclickListener implements View.OnClickListener {
     private IServiceProvider site;
     AppCompatActivity on;
-    public FloatingActionButtonOnclickListener(Activity on, IServiceProvider site) {
+    IViewportRegionManager viewportRegionManager;
+
+    public FloatingActionButtonOnclickListener(Activity on, IServiceProvider site, IViewportRegionManager viewportRegionManager) {
         this.on = (AppCompatActivity) on;
         this.site = site;
+        this.viewportRegionManager = viewportRegionManager;
     }
-
 
 
     @Override
@@ -105,9 +107,8 @@ public class FloatingActionButtonOnclickListener implements View.OnClickListener
                         name = name.substring(spliter + 1, name.length());
                     }
                     //切换desktop region
-//                    if(regionNav.navigate(name)){
-//                        dialog.dismiss();
-//                    }
+                    viewportRegionManager.display(name, R.id.desktop_display);
+                    dialog.dismiss();
                 }
             });
 
@@ -115,7 +116,7 @@ public class FloatingActionButtonOnclickListener implements View.OnClickListener
 
             final CJBottomNavigationView bottomNavigationView = v.findViewById(R.id.popup_navigation);
             if (bottomNavigationView.getChildCount() > 0) {
-                BadgeRadioButton badgeRadioButton=(BadgeRadioButton)bottomNavigationView.getChildAt(0);
+                BadgeRadioButton badgeRadioButton = (BadgeRadioButton) bottomNavigationView.getChildAt(0);
                 badgeRadioButton.setBadgeNumber(22);
             }
             bottomNavigationView.setOnCheckedChangeListener(new CJBottomNavigationView.OnCheckedChangeListener() {
@@ -126,13 +127,13 @@ public class FloatingActionButtonOnclickListener implements View.OnClickListener
                     if (spliter > -1) {
                         name = name.substring(spliter + 1, name.length());
                     }
-                    IRequester requester=site.getService("$.requester");
-                    Frame frame=new Frame(String.format("navigate /%s netos/1.0",name));
+                    IRequester requester = site.getService("$.requester");
+                    Frame frame = new Frame(String.format("navigate /%s netos/1.0", name));
                     requester.request(frame);
 //                    if(navigation.navigate(name)) {
-                        dialog.dismiss();
+                    dialog.dismiss();
 //                    }
-                    return ;
+                    return;
                 }
 
 

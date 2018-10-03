@@ -5,9 +5,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.View;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import cj.studio.netos.framework.annotation.Reciever;
@@ -35,7 +37,7 @@ class ViewportRegionManager implements IViewportRegionManager, IRecieverCallback
             return;
         }
         String name = viewportRegion.name();
-        if (name.indexOf("/")>-1) {
+        if (name.indexOf("/") > -1) {
             Log.e("ViewportRegionManager", "格式错误，区域名不能是路径。注解 @ViewportRegion :" + clazz);
             return;
         }
@@ -74,20 +76,29 @@ class ViewportRegionManager implements IViewportRegionManager, IRecieverCallback
     @Override
     public void display(String name, int displayResid) {
         Fragment fragment = fragmentMap.get(name);
-        if(fragment==null){
-            Log.e("ViewportRegionManager",String.format("不存在名字为%s的fragment",name));
+        if (fragment == null) {
+            Log.e("ViewportRegionManager", String.format("不存在名字为%s的fragment", name));
             return;
         }
         FragmentManager fragmentManager = viewport.getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-
         try {
+            List<Fragment> list = fragmentManager.getFragments();
+            for (int i = 0; i < list.size(); i++) {
+                Fragment old = list.get(i);
+                View view = old.getView();
+                if(displayResid==((View)view.getParent()).getId()) {
+                    if (!old.isHidden()) {
+                        transaction.hide(old);
+                    }
+                }
+            }
             if (fragment.isAdded()) {
                 if (fragment.isHidden()) {
                     transaction.show(fragment);
                 }
             } else {
-                transaction.add(displayResid, fragment).show(fragment);
+                transaction.add(displayResid, fragment, "tag_" + displayResid).show(fragment);
             }
             transaction.commit();
         } catch (Exception e) {
@@ -107,7 +118,7 @@ class ViewportRegionManager implements IViewportRegionManager, IRecieverCallback
             Log.e("ViewportRegionManager", "请求的Region不存在：" + frame.url());
             return;
         }
-        if("navigate".equals(frame.command())) {
+        if ("navigate".equals(frame.command())) {
             String displayResId = frame.head("Display-ResourceId");
             if (StringUtil.isEmpty(displayResId)) {
                 Log.e("ViewportRegionManager", "请求缺少Head：Display-ResourceId");
@@ -122,8 +133,8 @@ class ViewportRegionManager implements IViewportRegionManager, IRecieverCallback
             if (reciever != null) {
                 field.setAccessible(true);
                 try {
-                    IReciever recobj =(IReciever)field.get(fragment);
-                    if(recobj!=null){
+                    IReciever recobj = (IReciever) field.get(fragment);
+                    if (recobj != null) {
                         recobj.fire(frame);
                     }
                 } catch (IllegalAccessException e) {

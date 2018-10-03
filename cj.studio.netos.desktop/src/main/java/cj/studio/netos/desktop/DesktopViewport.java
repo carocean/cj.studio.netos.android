@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import cj.studio.netos.desktop.region.MessagerRegion;
+import cj.studio.netos.desktop.region.NewsRegion;
 import cj.studio.netos.framework.INeuron;
 import cj.studio.netos.framework.IReciever;
 import cj.studio.netos.framework.IServiceProvider;
@@ -42,9 +43,8 @@ public class DesktopViewport extends AppCompatActivity {
 
         IViewportRegionManager viewportRegionManager = workbench.createRegionManager(this);
         reciever.accept(viewportRegionManager);
-        Fragment messager = new MessagerRegion();
-        viewportRegionManager.addRegion(messager);
-//        viewportRegionManager.addRegion("", fragment);
+        viewportRegionManager.addRegion(new MessagerRegion());
+        viewportRegionManager.addRegion(new NewsRegion());
 
         viewportRegionManager.display("messager",R.id.desktop_display);
         //在本viewport上调自己的区域，会导致循环
@@ -56,7 +56,7 @@ public class DesktopViewport extends AppCompatActivity {
 //        fab.setBackgroundColor(0);
 //        fab.setBackgroundResource(R.drawable.face);
         fab.setImageResource(R.mipmap.ic_face);
-        FloatingActionButtonOnclickListener floatingActionButtonOnclickListener = new FloatingActionButtonOnclickListener(this, site);
+        FloatingActionButtonOnclickListener floatingActionButtonOnclickListener = new FloatingActionButtonOnclickListener(this, site,viewportRegionManager);
         fab.setOnClickListener(floatingActionButtonOnclickListener);
 
     }
