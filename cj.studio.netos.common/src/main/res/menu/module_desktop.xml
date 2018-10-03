@@ -1,0 +1,46 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".NetOSActivity">
+    <item
+        android:id="@+id/scans"
+        android:icon="@drawable/ic_desktop_scans_24dp"
+        android:orderInCategory="100"
+        android:title="@string/menu_desktop_scans"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/linkman"
+        android:icon="@drawable/ic_desktop_linkman_24dp"
+        android:orderInCategory="101"
+        android:title="@string/menu_desktop_linkman"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/netarea"
+        android:icon="@drawable/ic_desktop_netarea_24dp"
+        android:orderInCategory="102"
+        android:title="@string/menu_desktop_netarea"
+        app:showAsAction="always" />
+    <group>
+        <item
+            android:id="@+id/wallet"
+            android:icon="@drawable/ic_desktop_wallet_24dp"
+            android:orderInCategory="103"
+            android:title="@string/menu_desktop_wallet"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/clouddisk"
+            android:icon="@drawable/ic_desktop_clouddisk_24dp"
+            android:orderInCategory="103"
+            android:title="@string/menu_desktop_clouddisk"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_desktop_settings_24dp"
+            android:orderInCategory="103"
+            android:title="@string/menu_desktop_settings"
+            app:showAsAction="never" />
+
+
+    </group>
+
+</menu>

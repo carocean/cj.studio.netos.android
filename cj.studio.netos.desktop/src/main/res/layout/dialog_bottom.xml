@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:background="@color/whiteBg">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="我的桌面"
+            android:textColor="@color/blackText1"
+            android:textSize="16sp" />
+    </LinearLayout>
+   <View style="@style/DeepUnderLineDp"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/popup_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/whiteBg"/>
+
+    <View style="@style/DeepUnderLineDp"/>
+
+    <cj.studio.netos.framework.view.CJBottomNavigationView
+        android:id="@+id/popup_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|end"
+        android:background="@color/colorWhite"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:menu="@menu/navigation_popup"/>
+
+</LinearLayout>

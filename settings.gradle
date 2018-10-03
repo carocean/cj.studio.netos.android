@@ -1,0 +1,1 @@
+include ':app', ':cj.studio.netos.framework', ':cj.studio.netos.desktop', ':cj.sutdio.netos.netflow', ':cj.studio.netos.market', ':cj.studio.netos.geoblog', ':cj.studio.netos.common'

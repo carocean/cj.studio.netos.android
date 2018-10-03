@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cj.studio.netos.desktop">
+
+    <application>
+        <activity
+            android:name=".DesktopViewport"
+            android:label="@string/title_activity_desktop_viewport"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".region.MessagerViewerViewportWidget"
+            android:label="@string/title_activity_desktop_viewport"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

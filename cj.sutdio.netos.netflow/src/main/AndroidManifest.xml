@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cj.sutdio.netos.netflow">
+
+    <application>
+        <activity android:name=".NetflowViewport"></activity>
+    </application>
+
+</manifest>

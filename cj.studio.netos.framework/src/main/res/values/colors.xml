@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="navigation_top_line">#cdcdcd</color>
+    <color name="navigation_backgroup">#f5f5f5</color>
+    <color name="blue_status_bar">#3F51B5</color>
+</resources>

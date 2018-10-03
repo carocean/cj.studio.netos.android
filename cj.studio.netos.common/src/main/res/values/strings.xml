@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">cj.studio.netos.common</string>
+    <string name="action_settings">Settings</string>
+    <string name="module_desktop">桌面</string>
+    <string name="module_netflow">网流</string>
+    <string name="module_geomicroblog">地微</string>
+    <string name="module_market">商机</string>
+    <string name="menu_desktop_scans">扫码</string>
+    <string name="menu_desktop_linkman">联系人</string>
+    <string name="menu_desktop_netarea">网域</string>
+    <string name="menu_desktop_clouddisk">云盘</string>
+    <string name="menu_desktop_wallet">钱包</string>
+    <string name="menu_desktop_settings">设置</string>
+    <string name="title_activity_net_area">中国电信</string>
+    <string name="hello_blank_fragment">市场</string>
+    <string name="netarea">网域</string>
+    <string name="action_message">消息</string>
+    <string name="action_news">新闻</string>
+    <string name="action_photo">照片</string>
+    <string name="action_mine">\@我的</string>
+    <string name="add_friend">添加好友</string>
+    <string name="create_group_chats">发起群聊</string>
+    <string name="readed">全部已读</string>
+    <string name="tips_badge_removed">提示标记已移除</string>
+</resources>
