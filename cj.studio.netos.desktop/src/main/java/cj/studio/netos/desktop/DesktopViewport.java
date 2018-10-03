@@ -76,7 +76,7 @@ public class DesktopViewport extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0&&getSupportFragmentManager().getBackStackEntryCount()<1) {
             INeuron neuron = ((INeuron) this.getApplication());
             IWorkbench workbench = neuron.cell().getService("$.workbench");
             workbench.monitorExit(this);

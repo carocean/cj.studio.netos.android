@@ -1,6 +1,8 @@
 package cj.studio.netos.desktop.region;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -54,5 +56,12 @@ public class MessagerRegion extends Fragment {
         return view;
     }
 
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if(hidden)return;
+        toolbarLayout.setTitle("消息");
+        super.onHiddenChanged(hidden);
+    }
 
 }

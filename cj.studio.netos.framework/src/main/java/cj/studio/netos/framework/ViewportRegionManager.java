@@ -90,16 +90,19 @@ class ViewportRegionManager implements IViewportRegionManager, IRecieverCallback
                 if(displayResid==((View)view.getParent()).getId()) {
                     if (!old.isHidden()) {
                         transaction.hide(old);
+                        transaction.addToBackStack(null);
                     }
                 }
             }
             if (fragment.isAdded()) {
                 if (fragment.isHidden()) {
                     transaction.show(fragment);
+                    transaction.addToBackStack(null);
                 }
             } else {
-                transaction.add(displayResid, fragment, "tag_" + displayResid).show(fragment);
+                transaction.add(displayResid, fragment).show(fragment);//addToBackStack不记录添加fragment过程
             }
+
             transaction.commit();
         } catch (Exception e) {
             Log.e("Host", e.getMessage());

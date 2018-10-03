@@ -30,5 +30,10 @@ public class NewsRegion extends Fragment {
 
         return view;
     }
-
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if(hidden)return;
+        toolbarLayout.setTitle("新闻");
+        super.onHiddenChanged(hidden);
+    }
 }
