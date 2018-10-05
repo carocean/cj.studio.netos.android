@@ -15,6 +15,6 @@ public interface IWorkbench extends ICell {
     void monitorExit(Activity viewport);
 
     void renderViewport(Activity viewport);
-
+    void renderViewportFullWindow(Activity viewport);
     IViewportRegionManager createRegionManager(FragmentActivity viewport);
 }

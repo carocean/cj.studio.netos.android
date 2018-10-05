@@ -12,7 +12,7 @@
     <item
         android:id="@+id/geoblog"
         android:icon="@drawable/ic_geomicroblog_black_24dp"
-        android:title="@string/module_geomicroblog" />
+        android:title="@string/module_geoblog" />
 
     <item
         android:id="@+id/market"

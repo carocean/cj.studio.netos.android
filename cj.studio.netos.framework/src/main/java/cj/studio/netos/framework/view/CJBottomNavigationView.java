@@ -37,7 +37,9 @@ public class CJBottomNavigationView extends RadioGroup {
         int menu = ta.getResourceId(R.styleable.CJBottomNavigationView_menu, 0);
         MenuInflater menuInflater = new SupportMenuInflater(context);
         menuBuilder = new MenuBuilder(context);
-        menuInflater.inflate(menu, menuBuilder);
+        if(menu>0) {
+            menuInflater.inflate(menu, menuBuilder);
+        }
         ta.recycle();
         initNavigation();
 

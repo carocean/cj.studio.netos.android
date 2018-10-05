@@ -9,4 +9,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Viewport {
      String name();
+     boolean isFullWindow() default false;
 }

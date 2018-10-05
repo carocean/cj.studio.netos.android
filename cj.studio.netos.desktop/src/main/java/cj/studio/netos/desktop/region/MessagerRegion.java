@@ -21,6 +21,7 @@ import cj.studio.netos.framework.IServiceProvider;
 import cj.studio.netos.framework.annotation.Reciever;
 import cj.studio.netos.framework.annotation.ServiceSite;
 import cj.studio.netos.framework.annotation.ViewportRegion;
+import cj.studio.netos.framework.view.BadgeRadioButton;
 import cj.studio.netos.framework.view.CJBottomNavigationView;
 
 @ViewportRegion(name = "messager")
@@ -42,12 +43,12 @@ public class MessagerRegion extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         toolbarLayout= getActivity().findViewById(R.id.toolbar_layout);
-        toolbarLayout.setTitle("消息");
         bottomNavigationView=getActivity().findViewById(R.id.module_navigation);
 
-        //如果不指定attachToRoot=false或inflater.inflate(R.layout.region_message,null)，则报此子fragment在父view中已存在的错误，该错误产生时其parent
-        //ViewGroup parent = (ViewGroup) view.getParent();parent显示为不为null,必须parent显示为不为null为null时才不报错
-        //以上错误的真实原因是：attachToRoot默认为true，会自动将当前fragment挂载到root上，所以再inflate相应的view上时会报其父视图中已存在此fragment的错误，因此attachToRoot必须设为false
+        setTitle();
+        setBottomVisibility(true);
+        installBottomMenu();
+
         View view = inflater.inflate(R.layout.region_message, container, false);
 
         RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.message_recycler);
@@ -55,12 +56,26 @@ public class MessagerRegion extends Fragment {
         mRecyclerView.addItemDecoration(new MyDividerItemDecoration(this.getContext(), 55));
         return view;
     }
+    private  void installBottomMenu(){
+        bottomNavigationView.inflateMenu(R.menu.navigation_message);
+        if(bottomNavigationView.getChildCount()>0) {
+            BadgeRadioButton badgeRadioButton = (BadgeRadioButton) bottomNavigationView.getChildAt(0);
+            badgeRadioButton.setBadgeNumber(332);
+        }
+    }
+    private void setBottomVisibility(boolean b) {
+        bottomNavigationView.setVisibility(View.VISIBLE);
+    }
 
+    private void setTitle() {
+        toolbarLayout.setTitle("消息");
+    }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         if(hidden)return;
-        toolbarLayout.setTitle("消息");
+        setTitle();
+        setBottomVisibility(true);
         super.onHiddenChanged(hidden);
     }
 

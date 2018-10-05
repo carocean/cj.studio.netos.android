@@ -35,5 +35,9 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.2.4'
     //annotationProcessor "org.androidannotations:androidannotations:4.4.0"
     //implementation "org.androidannotations:androidannotations-api:4.4.0"
+    //开始：高德地图所引API
+    api 'com.nineoldandroids:library:2.4.0'
+    api 'com.dsiner.lib:xrv:1.1.2'
+    //结束高德
 
 }

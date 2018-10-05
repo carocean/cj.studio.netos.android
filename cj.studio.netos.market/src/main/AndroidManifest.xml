@@ -1,2 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cj.studio.netos.market" />
+    package="cj.studio.netos.market">
+
+    <application>
+        <activity
+            android:name=".MarketViewport"></activity>
+    </application>
+
+</manifest>

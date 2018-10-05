@@ -27,6 +27,13 @@ class ViewportLifecycleCallbacks implements Application.ActivityLifecycleCallbac
             if (viewport == null) {
                 return;
             }
+            IWorkbench workbench=site.getService("$.workbench");
+
+            if(viewport.isFullWindow()){
+                workbench.renderViewportFullWindow(activity);
+            }else{
+                workbench.renderViewport(activity);//适配窗口
+            }
             injectFields(activity, clazz,viewport);
         }
 

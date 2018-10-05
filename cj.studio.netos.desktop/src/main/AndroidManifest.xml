@@ -6,11 +6,11 @@
         <activity
             android:name=".DesktopViewport"
             android:label="@string/title_activity_desktop_viewport"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            ></activity>
         <activity
             android:name=".region.MessagerViewerViewportWidget"
             android:label="@string/title_activity_desktop_viewport"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            ></activity>
     </application>
 
 </manifest>
