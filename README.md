@@ -13,8 +13,9 @@ cj.studio.netos.android
 2.支持面向模块开发。
   - Framework项目是核心框架，common项目为其它项目提供全局资源
   - 其它功能各独立项目
+  
 3.SplashScreen 中检查本地是否有令牌，如果有则直接跳转首页，否则跳到登录
-    
+    ``
     @Viewport(name = "/splash")
     public class SplashScreen extends AppCompatActivity {
         @ServiceSite
@@ -70,20 +71,24 @@ cj.studio.netos.android
             });
         }
     }
+    ``
     
-    @Viewport 视口，声明Acivity
+    - @Viewport 视口，声明Acivity
     @ServiceSite 注入服务站点，能获取到框架所提供的服务，如：
-    获取神经元
-    INeuron neuron=site.getService("$");
-    获取请求器
-     IRequester requester=site.getService("$.requester");
-    使用请求器跳转到登录视口 
-    Frame frame=new Frame("navigate /login netos/1.0");
-    requester.request(frame);
-    //在输出轴突中添加突触以拦截消息侦，请求包括网络推送而来的消息侦和请求器发送的本地消息侦
-    neuron.inputAxon().add(new ISynapsis()
+        - 获取神经元
+        INeuron neuron=site.getService("$");
+        - 获取请求器
+        IRequester requester=site.getService("$.requester");
+    - 使用请求器跳转到登录视口 
+        ``
+        Frame frame=new Frame("navigate /login netos/1.0");
+        requester.request(frame);
+        ``
+    - 在输出轴突中添加突触以拦截消息侦，请求包括网络推送而来的消息侦和请求器发送的本地消息侦
+        ``neuron.inputAxon().add(new ISynapsis()``
     
 4.LoginViewport 登录
+                   ``
                    LoginFrom loginFrom=new LoginFrom(mEmail,mPassword,addresslist);
                    neuron.startNetosService(loginFrom);
                    Frame frame=new Frame("navigate / netos/1.0");
@@ -91,6 +96,7 @@ cj.studio.netos.android
                    frame.parameter("zz","....");
                    IRequester requester=site.getService("$.requester");
                    requester.request(frame);
+                   ``
   登录成功后启动netos服务：neuron.startNetosService(loginFrom);
   然后跳转到首页：navigate / netos/1.0
   
