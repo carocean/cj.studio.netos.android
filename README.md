@@ -4,8 +4,8 @@ cj.studio.netos.android
 
 1.如图：
 
-![Image text](https://github.com/carocean/cj.studio.android/document/img/home.jpeg)
+![Image text](https://github.com/carocean/cj.studio.android/tree/master/document/img/home.jpeg)
 
-![Image text](https://github.com/carocean/cj.studio.android/document/img/popup.jpeg)
+![Image text](https://github.com/carocean/cj.studio.android/tree/master/document/img/popup.jpeg)
 
-![Image text](https://github.com/carocean/cj.studio.android/document/img/geoblog.jpeg)
+![Image text](https://github.com/carocean/cj.studio.android/tree/master/document/img/geoblog.jpeg)
