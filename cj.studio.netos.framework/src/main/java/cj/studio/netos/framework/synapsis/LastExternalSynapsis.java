@@ -100,6 +100,9 @@ public class LastExternalSynapsis implements ISynapsis{
             for (String key : params) {
                 intent.putExtra(String.format("$.parameter.%s", key), frame.parameter(key));
             }
+            if(frame.content().size()>0){
+                intent.putExtra("$.content",frame.content().toByteArray());
+            }
             intent.setClass(application, viewportClazz);
             application.startActivity(intent);
         }
