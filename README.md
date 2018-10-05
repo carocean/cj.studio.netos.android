@@ -114,12 +114,16 @@ cj.studio.netos.android
   - IViewportRegionManager viewportRegionManager = workbench.createRegionManager(this); 任何视口均可包含区域（ViewportRegion)，由区域管理器管理
     - viewportRegionManager.addRegion(new MessagerRegion()); 添加一个区域
     - viewportRegionManager.display("messager",R.id.desktop_display); 显示指定的区域到视口的指定容器
+
+
 6.MessagerRegion 消息区域。
     - 声明一个区域：
         @ViewportRegion(name = "messager")
         public class MessagerRegion extends Fragment
     - 区域隐形事件，该事件用于在区域显示或隐藏事调整控件属性：
         public void onHiddenChanged(boolean hidden)
+        
+
 7.区域间的切换方式：
     - 通过视口管理器的display方法切换：
         viewportRegionManager.display(name, R.id.desktop_display);
@@ -128,12 +132,14 @@ cj.studio.netos.android
         Frame frame=new Frame("navigate /#messager netos/1.0");
         requester.request(frame);
         在请求地址#号后面是区域名，类似于http请求地址中的#号用于页面内定位一样，区域在概念上是视口的一部分,故用#号表示。以上/对应的是桌面，所以即表示桌面下的区域messager
+
 8.运行时服务：
     概念：由开发者在运行时可以添加到容器的服务称之为运行时服务，设有A、B两个类
     - A类中注入：@ServiceSite private IServiceSite site;
         则在A跳转到B类前调用：site.addService("myService",new MyService());
     - B类中注入：@ServiceSite private IServiceProvider site;
         则：MyService myService=site.getService("mySerivce");
+
 9.请求器侦中的头的键值和参数在目标视口中的获取方式：
     - 参数和头的获取：getIntent().getStringExtra(key);其中的key的写法是:$.head.name或$.parameter.name 
     - 请求地址获取：getIntent().getDataExtra() 
