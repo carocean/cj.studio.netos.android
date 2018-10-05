@@ -15,7 +15,7 @@ cj.studio.netos.android
   - 其它功能各独立项目
   
 3.SplashScreen 中检查本地是否有令牌，如果有则直接跳转首页，否则跳到登录
-    ```
+    `
     @Viewport(name = "/splash")
     public class SplashScreen extends AppCompatActivity {
         @ServiceSite
@@ -71,7 +71,7 @@ cj.studio.netos.android
             });
         }
     }
-    ```
+    `
     
     - @Viewport 视口，声明Acivity
     @ServiceSite 注入服务站点，能获取到框架所提供的服务，如：
