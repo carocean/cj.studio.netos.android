@@ -15,7 +15,7 @@ cj.studio.netos.android
   - 其它功能各独立项目
   
 3.SplashScreen 中检查本地是否有令牌，如果有则直接跳转首页，否则跳到登录
-    ``
+    ```
     @Viewport(name = "/splash")
     public class SplashScreen extends AppCompatActivity {
         @ServiceSite
@@ -71,7 +71,7 @@ cj.studio.netos.android
             });
         }
     }
-    ``
+    ```
     
     - @Viewport 视口，声明Acivity
     @ServiceSite 注入服务站点，能获取到框架所提供的服务，如：
@@ -88,7 +88,7 @@ cj.studio.netos.android
         ``neuron.inputAxon().add(new ISynapsis()``
     
 4.LoginViewport 登录
-                   ``
+                   ```
                    LoginFrom loginFrom=new LoginFrom(mEmail,mPassword,addresslist);
                    neuron.startNetosService(loginFrom);
                    Frame frame=new Frame("navigate / netos/1.0");
@@ -96,7 +96,7 @@ cj.studio.netos.android
                    frame.parameter("zz","....");
                    IRequester requester=site.getService("$.requester");
                    requester.request(frame);
-                   ``
+                   ```
   登录成功后启动netos服务：neuron.startNetosService(loginFrom);
   然后跳转到首页：navigate / netos/1.0
   
