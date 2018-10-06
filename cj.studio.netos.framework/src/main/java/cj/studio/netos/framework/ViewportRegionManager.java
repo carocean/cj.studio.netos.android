@@ -88,7 +88,8 @@ class ViewportRegionManager implements IViewportRegionManager, IRecieverCallback
                 Fragment old = list.get(i);
                 View view = old.getView();
                 if(displayResid==((View)view.getParent()).getId()) {
-                    if (!old.isHidden()) {
+                    ViewportRegion viewportRegion=old.getClass().getAnnotation(ViewportRegion.class);
+                    if (!old.isHidden()&&(viewportRegion!=null&&!name.equals(viewportRegion.name()))) {
                         transaction.hide(old);
                         transaction.addToBackStack(null);
                     }

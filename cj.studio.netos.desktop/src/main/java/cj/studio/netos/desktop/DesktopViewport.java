@@ -119,11 +119,15 @@ public class DesktopViewport extends AppCompatActivity {
             } else if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
                 ////已经收缩完成
 //                    Log.i("....","已经收缩完成");
+
                 is_restore_status_bar=true;
             } else {
                 //过程
 //                    Log.i("....","过程");
                 if(is_restore_status_bar){
+                    return;
+                }
+                if(Math.abs(verticalOffset) <= appBarLayout.getTotalScrollRange()/2){
                     return;
                 }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
